@@ -57,3 +57,21 @@ fetch('http://localhost:8081/User_RagistraionForm/forgot_password.php', {
 })
 .then(res => res.json())
 .then(data => console.log(data));
+//add user modal js
+const openformbtn = document.getElementById('openformbtn');
+const formModal = document.getElementById('formModal');
+
+openformbtn.addEventListener('click', openFormModal());
+
+function openFormModal() {
+    fetch('create.php')
+        .then(response => response.text())
+        .then(html => {
+            formModal.innerHTML = html;
+            formModal.classList.remove('hidden');
+        });
+}
+
+function closeFormModal() {
+    formModal.classList.add('hidden');
+}
